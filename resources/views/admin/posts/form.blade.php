@@ -7,7 +7,7 @@
         <input type="text" name="author" id="author" class="form-control" value="{{ old('author', $post->author) }}" required>
 
         <label for="categoria" class="required mt-4">Categoria</label>
-            <select class="form-control select2" required value="0" id="categoria" name="category_id">
+            <select class="form-control select2" multiple required value="0" id="categoria" name="category_id[]">
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach

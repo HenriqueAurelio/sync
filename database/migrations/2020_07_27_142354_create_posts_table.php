@@ -17,8 +17,6 @@ class CreatePostsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('author');
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->on('categories')->references('id');
             $table->longText('text');
             $table->timestamps();
         });

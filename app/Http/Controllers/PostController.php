@@ -22,7 +22,7 @@ class PostController extends Controller
     }
     public function store(Request $request)
     {
-        $post = Post::create($request->all());
+        $post = Post::create($request->except('category_id'));
         $post->categories()->attach($request->category_id);
         return redirect()->route('posts.index')->with('success', true);
     }
@@ -39,8 +39,8 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post)
     {
-        $post->update($request->all());
-        $post->categories()->sync([1,2]);
+        $post->update($request->except('category_id'));
+        $post->categories()->sync($request->category_id);
         return redirect()->route('posts.index')->with('success', true);
     }
 

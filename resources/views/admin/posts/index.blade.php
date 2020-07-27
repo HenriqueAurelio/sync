@@ -13,14 +13,11 @@
             @foreach($posts as $post)
                 <tr>
                     <td>{{ $post->name }}</td>
-                    @foreach($categories as $category)
-                        @if($category->id == $post->category_id)
-                            <td>{{ $category->name }}</td> 
-                        @endif
-                    @endforeach
-                    @foreach($post->categories as $post)     
-                        <td>{{ $post->pivot->category_id }}</td>        
-                    @endforeach
+                    <td>
+                        @foreach($post->categories as $category)  
+                            <button class="btn btn-dark" disabled>{{ $category->name }}</button>    
+                        @endforeach
+                    </td> 
                     <td>
                         <a href="{{ route('posts.show', $post->id) }}" class="btn btn-success">Ver</a>
                         <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">Editar</a>
